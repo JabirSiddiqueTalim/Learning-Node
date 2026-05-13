@@ -3,6 +3,7 @@ import { insertProduct, readProduct } from "../server/product.server";
 
 import type { IProduct } from "../types/product.type"
 import { parseBody } from "../utility/parseBody";
+import { sendResponse } from "../utility/server.response";
 export const productHandle = async (req: IncomingMessage, res: ServerResponse) => {
   const url = req.url;
   const method = req.method;
@@ -14,23 +15,30 @@ export const productHandle = async (req: IncomingMessage, res: ServerResponse) =
   console.log(id)
   if (url === '/products' && method === 'GET') {
     const product = readProduct();
-    res.writeHead(200, { "content-type": "application/json" })
-    res.end(JSON.stringify({
-      message: "This is products from controller products.ts",
-      data: product
-    })
-    )
+    // res.writeHead(200, { "content-type": "application/json" })
+    // res.end(JSON.stringify({
+    //   message: "This is products from controller products.ts",
+    //   data: product
+    // })
+    // )
+  //   res: ServerResponse,
+  // statusCode: number,
+  // success: boolean,
+  // message: string,
+  // data?: any,
+    sendResponse(res,200,true,"This is products from controller products.ts",product);
   }
   else if (method === 'GET' && id != null) {
     const products = readProduct();
     const singleProduct = products.find((p: IProduct) => p.id === Number(id));
     // console.log(singleProduct)
-    res.writeHead(200, { "content-type": "application/json" })
-    res.end(JSON.stringify({
-      message: "This is products from controller products.ts",
-      data: singleProduct
-    })
-    )
+    // res.writeHead(200, { "content-type": "application/json" })
+    // res.end(JSON.stringify({
+    //   message: "This is products from controller products.ts",
+    //   data: singleProduct
+    // })
+    // )
+    sendResponse(res,200,true,"This is products from controller products.ts",singleProduct);
   } else if (method === "POST" && url === "/products") {
     const products = readProduct();
     const body = await parseBody(req);
@@ -44,12 +52,14 @@ export const productHandle = async (req: IncomingMessage, res: ServerResponse) =
     products.push(newProduct);
     insertProduct(products);
     // console.log(products)
-    res.writeHead(200, { "content-type": "application/json" })
-    res.end(JSON.stringify({
-      message: "product created",
-      data: products
-    })
-    )
+    // res.writeHead(200, { "content-type": "application/json" })
+    // res.end(JSON.stringify({
+    //   message: "product created",
+    //   data: products
+    // })
+    // )
+    sendResponse(res,200,true,"product created",products);
+    
   } else if (method === 'PUT' && id != null) {
     const products = readProduct();
     const body = await parseBody(req);
