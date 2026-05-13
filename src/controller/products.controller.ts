@@ -2,7 +2,8 @@ import type { IncomingMessage, ServerResponse } from "http";
 import { readProduct } from "../server/product.server";
 
 import type { IProduct} from "../types/product.type"
-export const productHandle = (req: IncomingMessage, res: ServerResponse) => {
+import { parseBody } from "../utility/parseBody";
+export const productHandle = async(req: IncomingMessage, res: ServerResponse) => {
   const url = req.url;
   const method = req.method;
   //Get All products
@@ -30,8 +31,19 @@ export const productHandle = (req: IncomingMessage, res: ServerResponse) => {
       message: "This is products from controller products.ts",
       data: singleProduct
     })
-    )
+    )    
+  }else if(method==="POST" && url==="/products")
+  {
+    const body =await parseBody(req);
+    console.log(body);
+    res.writeHead(200, { "content-type": "application/json" })
+    res.end(JSON.stringify({
+      message: "This is products from controller products.ts",
+      // data: 
+    })
+    )   
 
-    
+
+
   }
 } 
