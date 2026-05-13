@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http"
-import { productHandle } from "../controller/products";
+import { productHandle } from "../controller/products.controller";
 
 export const routerHandle=(req:IncomingMessage,res:ServerResponse)=>
 {

@@ -1,7 +1,32 @@
 [
   {
-    "id":5,
-    "name":"Product - 1",
-    "price":200
+    "id": 1,
+    "name": "Logitech MX Master 3S",
+    "price": 99,
+    "description": "High-performance wireless ergonomic mouse with ultra-fast scrolling and quiet clicks."
+  },
+  {
+    "id": 2,
+    "name": "Keychron K2 Mechanical Keyboard",
+    "price": 79,
+    "description": "Compact 75% layout wireless mechanical keyboard with Gateron switches and RGB backlighting."
+  },
+  {
+    "id": 3,
+    "name": "Sony WH-1000XM5",
+    "price": 348,
+    "description": "Industry-leading noise-canceling wireless headphones with exceptional call quality and battery life."
+  },
+  {
+    "id": 4,
+    "name": "Dell UltraSharp 27 Monitor",
+    "price": 450,
+    "description": "4K UHD USB-C Hub monitor with IPS Black technology and 100% sRGB color coverage."
+  },
+  {
+    "id": 5,
+    "name": "Samsung T7 Shield SSD",
+    "price": 120,
+    "description": "1TB portable external solid state drive with IP65 water and dust resistance for rugged use."
   }
 ]
